@@ -1,0 +1,97 @@
+<html>
+    <head>
+        <title>
+             local storage 
+        </title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      </head>
+      <body>
+      
+      <div class="container">
+        <h2>Subscription Form</h2>
+        <form action="#">
+            <div class="form-group">
+                <label for="name">Customer Name:</label>
+                <input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
+              </div>
+
+          <div class="form-group">
+            <label for="amount">Amount:</label>
+            <input type="am" class="form-control" id="amount" placeholder="Enter amount" name="amount">
+          </div>
+          
+          <div class="form-group">
+            <label for="type">Type:</label>
+            <input type="text" class="form-control" id="type" placeholder="Enter type" name="type">
+          </div>
+
+          <div class="form-group">
+            <label for="date">Due date:</label>
+            <input type="date" class="form-control" id="date" placeholder="Enter date" name="date">
+          </div>
+
+         
+          <button type="button" onclick="saveData()" id="save_btn" class="btn btn-default">Submit</button>
+          <button type="button" onclick="deleteData()">Delete Data</button>
+         
+        <br>
+        </form>
+      </div>
+      
+      </body>
+      <script>
+function saveData()
+{
+let name,amount,type,date;
+name=document.getElementById("name").value;
+amount=document.getElementById("amount").value;
+type=document.getElementById("type").value;
+date=document.getElementById("date").value;
+
+
+localStorage.setItem("name",name)
+localStorage.setItem("amount",amount)
+localStorage.setItem("type",type)
+localStorage.setItem("date",date)
+let user_records=new Array();
+user_records=JSON.parse(localStorage.getItem("users"))?JSON.parse(localStorage.getItem("users")):[]
+if(user_records.some((v)=>{return v.email==email}))
+{
+  alert("duplicate data");
+}
+else
+{
+  user_records.push({
+  "name":name,
+  "amount":amount,
+  "type":type,
+  "date":date
+})
+localStorage.setItem("users",JSON.stringify(user_records));
+}
+
+}
+function deleteData()
+{
+let name,amount,type,date;
+name=document.getElementById("name").value;
+amount=document.getElementById("amount").value;
+type=document.getElementById("type").value;
+date=document.getElementById("date").value;
+
+
+localStorage.removeItem("name",name)
+localStorage.removeItem("amount",amount)
+localStorage.removeItem("type",type)
+localStorage.removeItem("date",date)
+
+}
+
+
+
+          </script>
+      </html>
