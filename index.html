@@ -1,23 +1,59 @@
-<h2>Form</h2>
-<form>
-	<input type="text" id="name">
-	<input type="button" value="Submit" onclick='manageData()'>
-</form>
-<div id="msg"></div>
+<!DOCTYPE html>
+<html>
 
-<h2>List</h2>
-<table border="1">
-	<thead>
-		<tr>
-			<td>S.No</td>
-			<td>Customer Name</td>
-			<td>Action</td>
-		</tr>
-	<thead>
-	<tbody id="root">
-	
-	<tbody>
-</table>
+<head>
+    <title>
+        Subscription Management
+    </title>
+    <link rel="stylesheet" href="style.css">
+</head>
 
+<body>
+    <table>
+        <tr>
+            <td>
+                <form onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
+                    <div>
+                        <label>Customer Name*</label><label class="validation-error hide" id="fullNameValidationError">This field is required.</label>
+                        <input type="text" name="fullName" id="fullName">
+                    </div>
+                    <div>
+                        <label>ID</label>
+                        <input type="text" name="empCode" id="empCode">
+                    </div>
+                    <div>
+                        <label>Amount</label>
+                        <input type="text" name="salary" id="salary">
+                    </div>
+                    
+                    <div>
+                        <label>Due Date</label>
+                        <input type="date" name="city" id="city">
+                    </div>
+                    <div  class="form-action-buttons">
+                        <input type="submit" value="Submit">
+                    </div>
+                </form>
+            </td>
+            <td>
+                <table class="list" id="employeeList">
+                    <thead>
+                        <tr>
+                            <th>Customer Name</th>
+                            <th>ID</th>
+                            <th>Amount</th>
+                            <th>Due Date</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
-<script src="index.js"></script>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <script src="script.js"></script>
+</body>
+
+</html>
